@@ -18,6 +18,7 @@ dependencies:
   flutter_svg: ^2.0.7
   dio: ^5.3.2
   device_preview: ^1.1.0
+  hexcolor: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -36,6 +37,31 @@ flutter:
     - assets\images\logo.png
     - assets\images\coin1.png
     - assets\images\coin2.png
+    - assets\images\page3.png
+    - assets\images\startImage.png
+    - assets\images\startLOGO.png
+    - assets\images\startText.png
+    - assets\images\logodark.png
+    - assets\images\Screen.jpg
+    - assets\icon\Calling.png
+    - assets\icon\Lock.png
+    - assets\icon\facebook.png
+    - assets\icon\google.png
+    - assets\icon\Message.png
+    - assets\icon\Profile.png
+    - assets\images\home.png
+    - assets\icon\Database_light.png
+    - assets\icon\Credit card_light.png
+    - assets\icon\Chat.png
+    - assets\icon\Notification.png
+    - assets\icon\Setting.png
+    - assets\icon\Ellipse 1653.png
+    - assets\icon\black square.png
+    - assets\icon\white square.png
+    - assets\icon\recivmessage.png
+    - assets\images\person.png
+    - assets\icon\Icon Home Active.png
+    
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
