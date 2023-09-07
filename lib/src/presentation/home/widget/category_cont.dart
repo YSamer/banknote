@@ -1,4 +1,8 @@
+import 'package:banknote/src/app/data/dio/exception/dio_error_extention.dart';
+import 'package:banknote/src/app/data/models/category_model.dart';
+import 'package:banknote/src/app/providers/category_provider.dart';
 import 'package:banknote/src/app/utils/color.dart';
+import 'package:banknote/src/app/widgets/custom_snackbar.dart';
 
 import 'package:flutter/material.dart';
 
@@ -10,8 +14,26 @@ class TiketContainer extends StatefulWidget {
 }
 
 class _TiketContainerState extends State<TiketContainer> {
+   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      _getData();
+    });
+  }
+
+  _getData() async {
+    try {
+      await context.read<CategoryProvider>().getCategoryhDetails();
+    } catch (e) {
+      showCustomSnackBar(readableError(e), context, isError: true);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+     final category = context
+        .select<CategoryProvider, CategoryModel>((CategoryProvider p) => p.category);
     return Padding(
       padding: EdgeInsets.only(
         left: MediaQuery.of(context).size.width / 40,

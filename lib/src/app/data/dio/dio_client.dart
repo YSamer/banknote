@@ -145,10 +145,10 @@ class DioClient {
     }
   }
 
-  Future<List<CategoryModel>> getCategory(int i) async {
+   Future<CategoryModel> getcategoryDetails() async {
     final token = await _getUserToken();
     final response = await _dio.get(
-      '${Connection.baseURL}$_encategoriesPoint',
+      '${ Connection.baseURL}$_encategoriesPoint',
       options: Options(
         headers: {
           ..._apiHeaders,
@@ -157,15 +157,12 @@ class DioClient {
       ),
     );
     if (response.data['error'] == 0 && response.data['data'].isNotEmpty) {
-      List<CategoryModel> l = <CategoryModel>[];
-      for (var category in (response.data['data'])) {
-        l.add(CategoryModel.fromJson(category));
-      }
-      return l;
+      return CategoryModel.fromJson(response.data['data']);
     } else {
-      return [];
+      throw response.data;
     }
   }
+
 
   ///////////////////////////////// UTILS /////////////////////////////////////
   // Getting User Token.
