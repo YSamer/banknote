@@ -6,7 +6,8 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 
-import 'package:banknote/src/presentation/welcome/pages/splash_page.dart';
+
+import 'package:banknote/src/presentation/welcome_page/splash_page.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

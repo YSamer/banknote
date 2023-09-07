@@ -1,5 +1,5 @@
-import 'package:banknote/src/app/resources/color.dart';
-import 'package:banknote/src/presentation/welcome/pages/splash_page.dart';
+import 'package:banknote/src/app/utils/color.dart';
+import 'package:banknote/src/presentation/welcome_page/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

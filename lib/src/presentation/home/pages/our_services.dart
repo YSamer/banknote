@@ -1,5 +1,5 @@
 import 'package:banknote/src/presentation/auth/widget/arrow_back_cont.dart';
-import 'package:banknote/src/presentation/home/widget/tikct_cont.dart';
+import 'package:banknote/src/presentation/home/widget/category_cont.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

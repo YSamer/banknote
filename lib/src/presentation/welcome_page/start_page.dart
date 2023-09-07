@@ -1,8 +1,8 @@
-import 'package:banknote/src/app/resources/color.dart';
+import 'package:banknote/src/app/utils/color.dart';
 import 'package:banknote/src/app/widgets/button.dart';
 import 'package:banknote/src/presentation/auth/pages/signin_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class StartPage extends StatelessWidget {
   const StartPage({super.key});
@@ -36,7 +36,12 @@ class StartPage extends StatelessWidget {
             buttonText: 'Get Start',
             buttonWidth: 230,
             onpress: () {
-              Get.to(() => const SignInPage());
+              Navigator.push(
+                context,
+                CupertinoPageRoute(
+                  builder: (_) => const SignInPage(),
+                ),
+              );
             },
             textColor: Colors.black,
             textSize: 18,

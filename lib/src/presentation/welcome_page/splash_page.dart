@@ -1,6 +1,5 @@
 import 'dart:async';
-
-import 'package:banknote/src/presentation/welcome/pages/onboarding_page1.dart';
+import 'package:banknote/src/presentation/welcome_page/onboarding_page1.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

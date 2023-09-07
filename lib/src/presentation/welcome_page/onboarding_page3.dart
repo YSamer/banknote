@@ -1,7 +1,8 @@
-import 'package:banknote/src/app/resources/color.dart';
+import 'package:banknote/src/app/utils/color.dart';
 import 'package:banknote/src/app/widgets/button.dart';
-import 'package:banknote/src/presentation/welcome/pages/splash_page.dart';
-import 'package:banknote/src/presentation/welcome/pages/start_page.dart';
+import 'package:banknote/src/presentation/welcome_page/splash_page.dart';
+import 'package:banknote/src/presentation/welcome_page/start_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -33,7 +34,7 @@ class OnBoardingPage3 extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(right: 10, left: 10),
                   child: Container(
-                    height: MediaQuery.of(context).size.height / 2.3,
+                    height: MediaQuery.of(context).size.height / 2.4,
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: p2,
@@ -53,8 +54,8 @@ class OnBoardingPage3 extends StatelessWidget {
                                 style: TextStyle(fontSize: 20),
                               ),
                             ),
-                            const SizedBox(
-                              height: 50,
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height / 25,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -74,8 +75,8 @@ class OnBoardingPage3 extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                const SizedBox(
-                                  width: 30,
+                                SizedBox(
+                                  width: MediaQuery.of(context).size.width / 10,
                                 ),
                                 Container(
                                   height:
@@ -94,8 +95,8 @@ class OnBoardingPage3 extends StatelessWidget {
                                 )
                               ],
                             ),
-                            const SizedBox(
-                              height: 50,
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height / 25,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -119,7 +120,12 @@ class OnBoardingPage3 extends StatelessWidget {
                                   buttonRadius: 25,
                                   buttonText: 'Next',
                                   onpress: () {
-                                    Get.to(() => const StartPage());
+                                    Navigator.push(
+                                      context,
+                                      CupertinoPageRoute(
+                                        builder: (_) => const StartPage(),
+                                      ),
+                                    );
                                   },
                                   textColor: Colors.white,
                                   textSize: 18,

@@ -1,4 +1,4 @@
-import 'package:banknote/src/app/resources/color.dart';
+import 'package:banknote/src/app/utils/color.dart';
 import 'package:banknote/src/app/widgets/button.dart';
 import 'package:banknote/src/presentation/auth/widget/arrow_back_cont.dart';
 import 'package:flutter/cupertino.dart';

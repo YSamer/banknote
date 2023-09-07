@@ -1,9 +1,9 @@
-
-import 'package:banknote/src/app/resources/color.dart';
+import 'package:banknote/src/app/utils/color.dart';
 import 'package:banknote/src/app/widgets/button.dart';
+import 'package:banknote/src/app/widgets/input_form_field.dart';
 import 'package:banknote/src/presentation/auth/widget/arrow_back_cont.dart';
-import 'package:banknote/src/presentation/auth/widget/sin_button.dart';
 import 'package:banknote/src/presentation/home/pages/bottomNavigationbar.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -24,10 +24,10 @@ class NewPassword extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-               SizedBox(
+              SizedBox(
                 height: MediaQuery.of(context).size.height / 14,
               ),
-               Row(
+              Row(
                 children: [
                   ArrowBackContainer(
                     onpress: () {
@@ -40,7 +40,7 @@ class NewPassword extends StatelessWidget {
                   Image.asset("assets/images/logodark.png"),
                 ],
               ),
-               SizedBox(
+              SizedBox(
                 height: MediaQuery.of(context).size.height / 25,
               ),
               const Text(
@@ -56,19 +56,31 @@ class NewPassword extends StatelessWidget {
                   fontSize: 12,
                 ),
               ),
-               SizedBox(
-               height: MediaQuery.of(context).size.height / 30,
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 30,
               ),
-              SignButton(
-                hintText: "  New Password ",
-                iconImage: "assets/icon/Lock.png",
+              InputFormField(
+                hintText: tr(' New Password'),
+                //  onSaved: (firstname) => _firstname = firstname,
+                prefixIcon: Image.asset('assets/icon/Lock.png'),
+                // validator: Validator(
+                //   rules: [
+                //     RequiredRule(validationMessage: tr('username_validation')),
+                //   ],
+                // ),
               ),
-              const SizedBox(
-                height: 20,
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 25,
               ),
-              SignButton(
-                hintText: "  Confirm Password ",
-                iconImage: "assets/icon/Lock.png",
+              InputFormField(
+                hintText: tr(' Confirm Password'),
+                //  onSaved: (firstname) => _firstname = firstname,
+                prefixIcon: Image.asset('assets/icon/Lock.png'),
+                // validator: Validator(
+                //   rules: [
+                //     RequiredRule(validationMessage: tr('username_validation')),
+                //   ],
+                // ),
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height / 3,
@@ -77,7 +89,7 @@ class NewPassword extends StatelessWidget {
                 alignment: Alignment.bottomRight,
                 child: Button(
                     onpress: () {
-                       Get.to(() => const ControlView());
+                      Get.to(() => const ControlView());
                     },
                     buttonText: "Next",
                     textColor: Colors.white,

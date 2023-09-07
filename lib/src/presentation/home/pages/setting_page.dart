@@ -1,5 +1,11 @@
+
+import 'package:banknote/src/app/providers/auth_provider.dart';
 import 'package:banknote/src/presentation/home/pages/edit_profile_page.dart';
+import 'package:banknote/src/presentation/home/pages/our_services.dart';
+import 'package:banknote/src/presentation/home/pages/policy_page.dart';
 import 'package:banknote/src/presentation/home/widget/setting_widget.dart';
+import 'package:banknote/src/presentation/welcome_page/start_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -8,6 +14,7 @@ class SettingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+        final user = context.watch<AuthProvider>().currentUser;
     return Scaffold(
       body: SingleChildScrollView(
         child: Stack(children: [
@@ -56,8 +63,8 @@ class SettingPage extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  const Text(
-                    "Abdallah \nHammad",
+                   Text(
+                    "${user!.fName} ""\n${user.lName}",
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(
@@ -71,11 +78,15 @@ class SettingPage extends StatelessWidget {
                   ),
                   InformationWidget(
                     infoText: 'My service',
-                    onpress: () {},
+                    onpress: () {
+                      Get.to(()=>const OurServicesPage());
+                    },
                   ),
                   InformationWidget(
                     infoText: 'Privacy Policy',
-                    onpress: () {},
+                    onpress: () {
+                      Get.to(()=> PolicyPage());
+                    },
                   ),
                   InformationWidget(
                     infoText: 'Language',
@@ -90,12 +101,25 @@ class SettingPage extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  const Text(
-                    "Sign Out",
-                    style: TextStyle(
-                        color: Colors.red,
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold),
+                  GestureDetector(
+                    onTap: () async {
+                    await context
+                        .read<AuthProvider>()
+                        .logout()
+                        .then((value) => Navigator.pushAndRemoveUntil(
+                            context,
+                            CupertinoPageRoute(
+                              builder: (_) => const StartPage(),
+                            ),
+                            (route) => false));
+                  },
+                    child: const Text(
+                      "Sign Out",
+                      style: TextStyle(
+                          color: Colors.red,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold),
+                    ),
                   )
                 ]),
           ),

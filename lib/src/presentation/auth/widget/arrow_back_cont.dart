@@ -1,4 +1,4 @@
-import 'package:banknote/src/app/resources/color.dart';
+import 'package:banknote/src/app/utils/color.dart';
 import 'package:flutter/material.dart';
 
 class ArrowBackContainer extends StatelessWidget {

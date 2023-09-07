@@ -1,4 +1,4 @@
-import 'package:banknote/src/app/resources/color.dart';
+import 'package:banknote/src/app/utils/color.dart';
 import 'package:banknote/src/presentation/home/pages/setting_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

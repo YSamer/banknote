@@ -1,7 +1,7 @@
-import 'package:banknote/src/app/resources/color.dart';
+import 'package:banknote/src/app/utils/color.dart';
 import 'package:banknote/src/presentation/home/pages/collection_details.dart';
 import 'package:banknote/src/presentation/home/pages/our_services.dart';
-import 'package:banknote/src/presentation/home/widget/tikct_cont.dart';
+import 'package:banknote/src/presentation/home/widget/category_cont.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -31,8 +31,8 @@ class HomePage extends StatelessWidget {
             "You’re ready to go, let’s find you a circlet",
             style: TextStyle(fontSize: 14, color: Colors.grey),
           ),
-          const SizedBox(
-            height: 30,
+          SizedBox(
+            height: MediaQuery.of(context).size.height / 30,
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
@@ -65,7 +65,6 @@ class HomePage extends StatelessWidget {
           TiketContainer(),
         ]),
       ),
-     
     );
   }
 }
