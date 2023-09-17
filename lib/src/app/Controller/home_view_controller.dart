@@ -1,7 +1,7 @@
-import 'package:banknote/src/presentation/home/pages/Notification_page.dart';
-import 'package:banknote/src/presentation/home/pages/chatPage.dart';
-import 'package:banknote/src/presentation/home/pages/home_page.dart';
-import 'package:banknote/src/presentation/home/pages/setting_page.dart';
+import 'package:banknote/src/presentation/home/Notification/Notification_page.dart';
+import 'package:banknote/src/presentation/home/Chat/chatPage.dart';
+import 'package:banknote/src/presentation/home/Home/home_page.dart';
+import 'package:banknote/src/presentation/home/Setting/setting_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

@@ -37,7 +37,7 @@ class OnBoardingPage3 extends StatelessWidget {
                     height: MediaQuery.of(context).size.height / 2.4,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                      color: p2,
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Padding(
@@ -104,7 +104,7 @@ class OnBoardingPage3 extends StatelessWidget {
                                 Button(
                                   buttonHight: 52,
                                   buttonWidth: 150,
-                                  buttonColor: p2,
+                                  buttonColor: Colors.white,
                                   buttonRadius: 25,
                                   buttonText: 'Skip',
                                   onpress: () {

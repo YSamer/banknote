@@ -29,14 +29,19 @@ dependencies:
   firebase_messaging: ^14.6.7
   image_picker: ^0.8.7+5
   cached_network_image: ^3.2.3
+  dotted_border: ^2.0.0+3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^2.0.0
+  flutter_launcher_icons: ^0.13.1
 
-
+flutter_icons:
+  android: "ic_launcher"
+  ios: true
+  image_path: "assets/images/logodark.png"
 flutter:
   uses-material-design: true
 
@@ -73,6 +78,7 @@ flutter:
     - assets\images\rightLogo.png
     - assets\icon\Icon Home Active.png
     - assets\icon\Check List Icon.png
+    - assets\icon\Upload.png
     - assets\JSON\policy.json
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

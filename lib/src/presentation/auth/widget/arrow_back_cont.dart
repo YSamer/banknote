@@ -8,14 +8,14 @@ class ArrowBackContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onpress,
-      child: Container(
-        height: 45,
-        width: 55,
-        decoration:
-            BoxDecoration(color: p1, borderRadius: BorderRadius.circular(10)),
-        child: const Center(
+      child: CircleAvatar(
+        backgroundColor: p7,
+        radius: 20,
+        child: const Align(
+          alignment: Alignment.center,
           child: Icon(
-            Icons.arrow_back_ios,
+            Icons.arrow_back,
+            size: 30,
             color: Colors.white,
           ),
         ),

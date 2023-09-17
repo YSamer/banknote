@@ -1,7 +1,8 @@
 import 'dart:async';
 import 'package:banknote/src/presentation/welcome_page/onboarding_page1.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -13,7 +14,14 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
-    Timer(const Duration(seconds: 1), () => Get.to(const OnBoardingPage1()));
+    Timer(const Duration(seconds: 1), () {
+      Navigator.push(
+        context,
+        CupertinoPageRoute(
+          builder: (_) => const OnBoardingPage1(),
+        ),
+      );
+    });
 
     super.initState();
   }

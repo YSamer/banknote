@@ -8,14 +8,14 @@ class InformationWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(
-          height: 25,
+         SizedBox(
+          height: MediaQuery.of(context).size.height/30
         ),
         const Divider(
           height: 5,
         ),
-        const SizedBox(
-          height: 25,
+         SizedBox(
+          height: MediaQuery.of(context).size.height/30
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

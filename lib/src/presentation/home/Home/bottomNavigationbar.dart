@@ -1,4 +1,5 @@
 import 'package:banknote/src/app/Controller/home_view_controller.dart';
+import 'package:banknote/src/app/utils/color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -18,7 +19,11 @@ class ControlView extends StatelessWidget {
   Widget bottomNavigationBar() {
     return GetBuilder<ControlViewModel>(
       init: ControlViewModel(),
-      builder: (controller) => BottomNavigationBar(items: [
+      builder: (controller) => 
+      
+      BottomNavigationBar(
+       backgroundColor: p3, 
+        items: [
         BottomNavigationBarItem(
           icon: SizedBox(
               height: 30,

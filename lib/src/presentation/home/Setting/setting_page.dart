@@ -1,10 +1,11 @@
-
 import 'package:banknote/src/app/providers/auth_provider.dart';
-import 'package:banknote/src/presentation/home/pages/edit_profile_page.dart';
-import 'package:banknote/src/presentation/home/pages/our_services.dart';
-import 'package:banknote/src/presentation/home/pages/policy_page.dart';
-import 'package:banknote/src/presentation/home/widget/setting_widget.dart';
+import 'package:banknote/src/presentation/home/Setting/edit_profile_page.dart';
+import 'package:banknote/src/presentation/home/Category/our_category.dart';
+import 'package:banknote/src/presentation/home/Policy/policy_page.dart';
+import 'package:banknote/src/presentation/home/Setting/language_page.dart';
+import 'package:banknote/src/presentation/home/Setting/widget/setting_widget.dart';
 import 'package:banknote/src/presentation/welcome_page/start_page.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,7 +15,7 @@ class SettingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-        final user = context.watch<AuthProvider>().currentUser;
+    final user = context.watch<AuthProvider>().currentUser;
     return Scaffold(
       body: SingleChildScrollView(
         child: Stack(children: [
@@ -41,9 +42,20 @@ class SettingPage extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      const CircleAvatar(
-                        radius: 55,
-                        backgroundImage: AssetImage("assets/images/person.png"),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10000.0),
+                        child: CachedNetworkImage(
+                          imageUrl: user?.photo ?? '',
+                          width: 100,
+                          height: 100,
+                          fit: BoxFit.cover,
+                          progressIndicatorBuilder:
+                              (context, url, downloadProgress) =>
+                                  CircularProgressIndicator(
+                                      value: downloadProgress.progress),
+                          errorWidget: (context, url, error) =>
+                              const Icon(Icons.error),
+                        ),
                       ),
                       SizedBox(
                         width: MediaQuery.of(context).size.width / 5,
@@ -63,9 +75,10 @@ class SettingPage extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                   Text(
-                    "${user!.fName} ""\n${user.lName}",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  Text(
+                    "${user!.fName} " "\n${user.lName}",
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(
                     height: 20,
@@ -79,18 +92,20 @@ class SettingPage extends StatelessWidget {
                   InformationWidget(
                     infoText: 'My service',
                     onpress: () {
-                      Get.to(()=>const OurServicesPage());
+                      Get.to(() => const OurCategory());
                     },
                   ),
                   InformationWidget(
                     infoText: 'Privacy Policy',
                     onpress: () {
-                      Get.to(()=> PolicyPage());
+                      Get.to(() => PolicyPage());
                     },
                   ),
                   InformationWidget(
                     infoText: 'Language',
-                    onpress: () {},
+                    onpress: () {
+                      Get.to(() => LanguagePage());
+                    },
                   ),
                   const SizedBox(
                     height: 20,
@@ -103,16 +118,16 @@ class SettingPage extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () async {
-                    await context
-                        .read<AuthProvider>()
-                        .logout()
-                        .then((value) => Navigator.pushAndRemoveUntil(
-                            context,
-                            CupertinoPageRoute(
-                              builder: (_) => const StartPage(),
-                            ),
-                            (route) => false));
-                  },
+                      await context
+                          .read<AuthProvider>()
+                          .logout()
+                          .then((value) => Navigator.pushAndRemoveUntil(
+                              context,
+                              CupertinoPageRoute(
+                                builder: (_) => const StartPage(),
+                              ),
+                              (route) => false));
+                    },
                     child: const Text(
                       "Sign Out",
                       style: TextStyle(

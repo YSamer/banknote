@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widget/chat_service_cont.dart';
+import 'widget/chat_service_cont.dart';
 
 class ChatPage extends StatelessWidget {
   const ChatPage({super.key});

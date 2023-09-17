@@ -2,7 +2,7 @@ import 'package:banknote/src/app/utils/color.dart';
 import 'package:banknote/src/app/widgets/button.dart';
 import 'package:banknote/src/app/widgets/input_form_field.dart';
 import 'package:banknote/src/presentation/auth/widget/arrow_back_cont.dart';
-import 'package:banknote/src/presentation/home/pages/bottomNavigationbar.dart';
+import 'package:banknote/src/presentation/home/Home/bottomNavigationbar.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 import 'package:flutter/material.dart';

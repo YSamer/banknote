@@ -1,13 +1,22 @@
+import 'dart:io';
+
 import 'package:banknote/src/app/utils/color.dart';
 import 'package:banknote/src/app/widgets/button.dart';
 import 'package:banknote/src/presentation/auth/widget/arrow_back_cont.dart';
+import 'package:banknote/src/presentation/home/SubmitForm/widget/add_attachment_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CollectionDetailsPage extends StatelessWidget {
-  const CollectionDetailsPage({super.key});
+class SubmitFormPage extends StatefulWidget {
+  const SubmitFormPage({super.key});
 
+  @override
+  State<SubmitFormPage> createState() => _SubmitFormPageState();
+}
+
+class _SubmitFormPageState extends State<SubmitFormPage> {
+    List<File> _files = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,8 +53,8 @@ class CollectionDetailsPage extends StatelessWidget {
                       Image.asset("assets/images/logodark.png"),
                     ],
                   ),
-                  const SizedBox(
-                    height: 20,
+                  SizedBox(
+                    height:MediaQuery.of(context).size.height/30,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -57,15 +66,15 @@ class CollectionDetailsPage extends StatelessWidget {
                       )
                     ],
                   ),
-                  const SizedBox(
-                    height: 10,
+                 SizedBox(
+                    height:MediaQuery.of(context).size.height/70,
                   ),
                   const Text(
                     "Please fill in the following information",
                     style: TextStyle(color: Colors.grey, fontSize: 12),
                   ),
-                  const SizedBox(
-                    height: 30,
+                   SizedBox(
+                    height:MediaQuery.of(context).size.height/50,
                   ),
                   const Text("Full Name"),
                   const SizedBox(
@@ -84,16 +93,15 @@ class CollectionDetailsPage extends StatelessWidget {
                       ),
                       enabledBorder: OutlineInputBorder(
                           borderSide:
-                              BorderSide(color: Colors.grey, width: 0.0),
+                              const BorderSide(color: Colors.grey, width: 0.0),
                           borderRadius: BorderRadius.circular(15.0)),
                     ),
                   ),
-                  const SizedBox(
-                    height: 10,
+                   SizedBox(
+                  height:MediaQuery.of(context).size.height/60,
                   ),
                   const Text("Phone Number"),
-                  const SizedBox(
-                    height: 10,
+                   SizedBox(   height:MediaQuery.of(context).size.height/60,   
                   ),
                   TextFormField(
                     decoration: InputDecoration(
@@ -108,16 +116,16 @@ class CollectionDetailsPage extends StatelessWidget {
                       ),
                       enabledBorder: OutlineInputBorder(
                           borderSide:
-                              BorderSide(color: Colors.grey, width: 0.0),
+                              const BorderSide(color: Colors.grey, width: 0.0),
                           borderRadius: BorderRadius.circular(15.0)),
                     ),
                   ),
-                  const SizedBox(
-                    height: 10,
+                   SizedBox(
+                  height:MediaQuery.of(context).size.height/60,
                   ),
                   const Text("Date"),
-                  const SizedBox(
-                    height: 10,
+                   SizedBox(
+                 height:MediaQuery.of(context).size.height/60,
                   ),
                   TextFormField(
                     decoration: InputDecoration(
@@ -131,23 +139,17 @@ class CollectionDetailsPage extends StatelessWidget {
                             context: context,
                             builder: (BuildContext builder) {
                               return SizedBox(
-                                height: MediaQuery.of(context)
-                                        .copyWith()
-                                        .size
-                                        .height /
-                                    2,
+                                height: MediaQuery.of(context).size.height / 2,
                                 child: Column(
                                   children: [
-                                    const SizedBox(
-                                      height: 20,
+                                     SizedBox(
+                                  height:MediaQuery.of(context).size.height/60,
                                     ),
                                     const Text("Choose date"),
-                                    Container(
-                                      height: MediaQuery.of(context)
-                                              .copyWith()
-                                              .size
-                                              .height /
-                                          3,
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height /
+                                              3,
                                       child: CupertinoDatePicker(
                                         initialDateTime: DateTime.now(),
                                         onDateTimeChanged: (DateTime newdate) {
@@ -162,13 +164,13 @@ class CollectionDetailsPage extends StatelessWidget {
                                         mode: CupertinoDatePickerMode.date,
                                       ),
                                     ),
-                                    const SizedBox(
-                                      height: 20,
+                                     SizedBox(
+                                       height:MediaQuery.of(context).size.height/60,
                                     ),
                                     Button(
                                         onpress: () {},
                                         buttonText: "Confirm Date",
-                                        textColor: p2,
+                                        textColor: Colors.white,
                                         buttonColor: p1,
                                         buttonRadius: 18,
                                         buttonHight: 80,
@@ -196,12 +198,12 @@ class CollectionDetailsPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(15.0)),
                     ),
                   ),
-                  const SizedBox(
-                    height: 10,
+                   SizedBox(
+                      height:MediaQuery.of(context).size.height/70,
                   ),
                   const Text("City / Province"),
-                  const SizedBox(
-                    height: 10,
+                   SizedBox(
+                 height:MediaQuery.of(context).size.height/70,
                   ),
                   TextFormField(
                     decoration: InputDecoration(
@@ -216,16 +218,16 @@ class CollectionDetailsPage extends StatelessWidget {
                       ),
                       enabledBorder: OutlineInputBorder(
                           borderSide:
-                              BorderSide(color: Colors.grey, width: 0.0),
+                              const BorderSide(color: Colors.grey, width: 0.0),
                           borderRadius: BorderRadius.circular(15.0)),
                     ),
                   ),
-                  const SizedBox(
-                    height: 10,
+                   SizedBox(
+                    height:MediaQuery.of(context).size.height/70,
                   ),
                   const Text("Detail Location"),
-                  const SizedBox(
-                    height: 10,
+                   SizedBox(
+                    height:MediaQuery.of(context).size.height/70,
                   ),
                   TextFormField(
                     decoration: InputDecoration(
@@ -237,15 +239,21 @@ class CollectionDetailsPage extends StatelessWidget {
                       ),
                       enabledBorder: OutlineInputBorder(
                           borderSide:
-                              BorderSide(color: Colors.grey, width: 0.0),
+                              const BorderSide(color: Colors.grey, width: 0.0),
                           borderRadius: BorderRadius.circular(15.0)),
                     ),
                     maxLength: 250,
                     maxLines: 10,
                   ),
-                  const SizedBox(
-                    height: 20,
+                   SizedBox(
+                   height:MediaQuery.of(context).size.height/60,
                   ),
+                    AddAttachmentWidget(
+                      onFetchFiles: (files) {
+                        _files = List.of(files);
+                        setState(() {});
+                      },
+                    ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -255,7 +263,7 @@ class CollectionDetailsPage extends StatelessWidget {
                           height: 80,
                           width: 160,
                           decoration: BoxDecoration(
-                              color: p2,
+                              color: Colors.white,
                               borderRadius: BorderRadius.circular(15)),
                           child: const Center(
                               child: Text(
@@ -270,7 +278,7 @@ class CollectionDetailsPage extends StatelessWidget {
                       Button(
                           onpress: () {},
                           buttonText: "Done",
-                          textColor: p2,
+                          textColor: Colors.white,
                           buttonColor: p1,
                           buttonRadius: 18,
                           buttonHight: 80,

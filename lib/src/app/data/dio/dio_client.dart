@@ -1,9 +1,10 @@
 import 'dart:io';
-
+import 'package:banknote/main.dart';
 import 'package:banknote/src/app/data/models/category_model.dart';
 import 'package:banknote/src/app/data/models/user_model.dart';
 import 'package:banknote/src/app/utils/app_constants.dart';
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
@@ -38,9 +39,10 @@ class DioClient {
   static const String _loginEndPoint = "auth/login";
   static const String _logoutEndPoint = "auth/logout";
   static const String _updateProfileEndPoint = "editProfile";
-  static const String _arcategoriesPoint = "categories/allCategories_ar";
-  static const String _encategoriesPoint = "categories/allCategories_en";
-
+  static final String _categoriesPoint =
+      "categories/allCategories_${NavigationService.currentContext.locale.languageCode}";
+  static final String _categoryDetailsPoint =
+      "categories/allSubSubCategories_${NavigationService.currentContext.locale.languageCode}";
   ////////////////////////////// METHODS //////////////////////////////////////
 
   Future<UserModel> register(UserModel user, String password) async {
@@ -108,7 +110,6 @@ class DioClient {
     required String firstName,
     required String lastName,
     required String email,
-    required String phone,
     String? password,
     File? image,
   }) async {
@@ -116,18 +117,19 @@ class DioClient {
     FormData data = FormData.fromMap({
       'first_name': firstName,
       'last_name': lastName,
-      'phone': phone,
       'email': email,
       if (password != null && password.length >= 8) ...{
         'password': password,
-        'password_confirmation': password,
       },
       if (image != null) 'photo': await MultipartFile.fromFile(image.path),
     }, ListFormat.multiCompatible);
+
     final response = await _dio.post(
       '${Connection.baseURL}$_updateProfileEndPoint',
       data: data,
-      queryParameters: {'_method': 'PUT'},
+      queryParameters: {
+        '_method': "PUT",
+      },
       options: Options(
         headers: {
           ..._apiHeaders,
@@ -135,20 +137,17 @@ class DioClient {
         },
       ),
     );
-    if (response.data['error'] == 0 ||
-        response.data['message']
-            .toString()
-            .contains('Profile data has been updated successfully')) {
-      return true;
+    if (response.data['status'] == true) {
+      return response.data;
     } else {
       throw response.data;
     }
   }
 
-   Future<CategoryModel> getcategoryDetails() async {
+  Future<CategoryModel> getCategories() async {
     final token = await _getUserToken();
     final response = await _dio.get(
-      '${ Connection.baseURL}$_encategoriesPoint',
+      '${Connection.baseURL}$_categoriesPoint',
       options: Options(
         headers: {
           ..._apiHeaders,
@@ -156,13 +155,31 @@ class DioClient {
         },
       ),
     );
-    if (response.data['error'] == 0 && response.data['data'].isNotEmpty) {
-      return CategoryModel.fromJson(response.data['data']);
+    if (response.data['status'] == true) {
+      return CategoryModel.fromJson(response.data);
     } else {
       throw response.data;
     }
   }
 
+  Future<CategoryModel> getCategoryDetails(int id) async {
+    final token = await _getUserToken();
+    final response = await _dio.get(
+      '${Connection.baseURL}$_categoryDetailsPoint',
+      queryParameters: {"id": id},
+      options: Options(
+        headers: {
+          ..._apiHeaders,
+          'Authorization': token,
+        },
+      ),
+    );
+    if (response.data['status'] == true) {
+      return CategoryModel.fromJson(response.data);
+    } else {
+      throw response.data;
+    }
+  }
 
   ///////////////////////////////// UTILS /////////////////////////////////////
   // Getting User Token.

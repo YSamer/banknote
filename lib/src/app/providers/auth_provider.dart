@@ -28,10 +28,10 @@ class AuthProvider extends ChangeNotifier {
         firstName: currentUser?.fName ?? '',
         lastName: currentUser?.lName ?? '',
         email: email,
-        phone: currentUser?.phone ?? '',
         password: password,
         image: image,
       );
+      print(currentUser?.toJson());
       if (state) {
         try {
           updateProfileStatus = DataStatus.success;
