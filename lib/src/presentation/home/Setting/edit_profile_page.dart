@@ -40,7 +40,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
   _submit() async {
     final auth = context.read<AuthProvider>();
     if (!_formKey.currentState!.validate()) {
-      print("2222222222222222");
+    
       if (!_autoValidate) setState(() => _autoValidate = true);
       return;
     }
@@ -121,7 +121,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                             : ClipRRect(
                                 borderRadius: BorderRadius.circular(10000.0),
                                 child: CachedNetworkImage(
-                                  imageUrl: user?.photo ?? '',
+                                  imageUrl: "https://banknote.dev.tqnia.me/admin/images/${user?.photo}" ,
                                   width: 100,
                                   height: 100,
                                   fit: BoxFit.cover,

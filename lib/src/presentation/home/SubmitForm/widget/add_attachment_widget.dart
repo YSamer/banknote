@@ -9,12 +9,11 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AddAttachmentWidget extends StatefulWidget {
-  const AddAttachmentWidget(
-      {Key? key, this.onFetchFiles, this.onFetchImage, this.isImage = false})
+  const AddAttachmentWidget({Key? key, this.onFetchImage, this.isImage = false})
       : super(key: key);
 
   final bool isImage;
-  final Function(List<File>)? onFetchFiles;
+
   final Function(File)? onFetchImage;
 
   @override
@@ -135,8 +134,7 @@ class _AddAttachmentWidgetState extends State<AddAttachmentWidget> {
                       height: MediaQuery.of(context).size.height / 1.5,
                       width: MediaQuery.of(context).size.width / 1.3,
                       child: Image(
-                        image: FileImage(_imageFile!),fit:BoxFit.cover
-                      ),
+                          image: FileImage(_imageFile!), fit: BoxFit.cover),
                     )
                   : Column(
                       children: [

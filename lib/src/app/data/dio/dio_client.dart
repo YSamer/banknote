@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:banknote/main.dart';
 import 'package:banknote/src/app/data/models/category_model.dart';
+import 'package:banknote/src/app/data/models/form_model.dart';
 import 'package:banknote/src/app/data/models/user_model.dart';
 import 'package:banknote/src/app/utils/app_constants.dart';
 import 'package:dio/dio.dart';
@@ -37,8 +38,9 @@ class DioClient {
   ////////////////////////////// END POINTS ///////////////////////////////////
   static const String _registerEndPoint = "auth/register";
   static const String _loginEndPoint = "auth/login";
-  static const String _logoutEndPoint = "auth/logout";
+  static const String _logoutEndPoint = "logout";
   static const String _updateProfileEndPoint = "editProfile";
+  static const String _createFormEndPoint = "forms/user-form";
   static final String _categoriesPoint =
       "categories/allCategories_${NavigationService.currentContext.locale.languageCode}";
   static final String _categoryDetailsPoint =
@@ -106,7 +108,7 @@ class DioClient {
     }
   }
 
-  Future<bool> updateProfile({
+  Future<UserModel> updateProfile({
     required String firstName,
     required String lastName,
     required String email,
@@ -138,7 +140,7 @@ class DioClient {
       ),
     );
     if (response.data['status'] == true) {
-      return response.data;
+      return UserModel.fromJson(response.data["data"]);
     } else {
       throw response.data;
     }
@@ -180,7 +182,40 @@ class DioClient {
       throw response.data;
     }
   }
+Future<FormModel> createForm({
+    required String firstName,
+    required String phone,
+    required String city,
+    required String detailLocation,
+    File? image,
+  }) async {
+    final token = await _getUserToken();
+    FormData data = FormData.fromMap({
+      'first_name': firstName,
+      'phone': phone,
+      'city': city,
+      'Detail_Location': detailLocation,
+      'id': 3,
+      if (image != null) 'photo': await MultipartFile.fromFile(image.path),
+    }, ListFormat.multiCompatible);
 
+    final response = await _dio.post(
+      '${Connection.baseURL}$_createFormEndPoint',
+      data: data,
+   
+      options: Options(
+        headers: {
+          ..._apiHeaders,
+          'Authorization': token,
+        },
+      ),
+    );
+    if (response.data['status'] == true) {
+      return FormModel.fromJson(response.data["data"]);
+    } else {
+      throw response.data;
+    }
+  }
   ///////////////////////////////// UTILS /////////////////////////////////////
   // Getting User Token.
   Future<String?> _getUserToken() async => await UserModel.getToken;

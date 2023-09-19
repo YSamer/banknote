@@ -53,7 +53,7 @@ class Category {
     id = json['id'];
     titl = json['titl'];
     desc = json['desc'];
-    price = json['price'];
+    price = json['price'].toString();
     date = json['date'];
     isDelete = json['is_delete'];
     isActive = json['is_active'];

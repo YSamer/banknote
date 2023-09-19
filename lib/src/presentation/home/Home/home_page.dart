@@ -5,6 +5,7 @@ import 'package:banknote/src/app/utils/color.dart';
 import 'package:banknote/src/app/widgets/custom_snackbar.dart';
 import 'package:banknote/src/presentation/home/Category/our_category.dart';
 import 'package:banknote/src/presentation/home/Category/widget/category_cont.dart';
+import 'package:banknote/src/presentation/home/SubmitForm/submit_form.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loading_indicator/loading_indicator.dart';
@@ -79,7 +80,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Get.to(() => const OurCategory());
+                    Get.to(() => const SubmitFormPage());
                   },
                   child: Text(
                     "See All",

@@ -11,7 +11,9 @@ class CategoriesProvider extends ChangeNotifier {
   Future<void> getCategoryhData() async {
     isload=true;
     notifyListeners();
+   
     categories = await _api.getCategories();
+   
     isload=false;
     notifyListeners();
   }

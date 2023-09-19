@@ -24,15 +24,15 @@ class AuthProvider extends ChangeNotifier {
       updateProfileStatus = DataStatus.loading;
       notifyListeners();
       print(currentUser?.toJson());
-      bool state = await _api.updateProfile(
-        firstName: currentUser?.fName ?? '',
-        lastName: currentUser?.lName ?? '',
+      currentUser  = await _api.updateProfile(
+        firstName: firstName ,
+        lastName: lastName ,
         email: email,
         password: password,
         image: image,
       );
       print(currentUser?.toJson());
-      if (state) {
+      if (currentUser!=null) {
         try {
           updateProfileStatus = DataStatus.success;
           notifyListeners();
